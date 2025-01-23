@@ -1,0 +1,82 @@
+body {
+  width: 350px;
+  padding: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #726dae;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  color: #ccc;
+}
+
+h2 {
+  color: #ccc;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #726dae;
+  color: #ccc;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+.page button {
+  background-color: #933737;
+  color: #ccc;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#articleForm button {
+  background-color: #375793;
+  color: #ccc;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#articleForm label {
+  color: #ccc;
+  padding: 10px 0;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s;
+}
+
+.page a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.page:hover {
+  background-color: #635f98;
+}
+
+.page {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
