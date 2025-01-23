@@ -2,14 +2,12 @@ import { BaseMessageLike } from "@langchain/core/messages";
 import { ChatGroq } from "@langchain/groq";
 import { Annotation, MemorySaver } from "@langchain/langgraph";
 import { StateGraph } from "@langchain/langgraph";
-import { EnvConfig } from "../env";
+import { Link } from "./types";
 
-type Link = { title: string; url: string };
-
-const { groqApiKey } = EnvConfig();
+const GROQ_API_KEY = "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";
 
 const model = new ChatGroq({
-  apiKey: groqApiKey,
+  apiKey: GROQ_API_KEY,
   temperature: 0.7,
   maxTokens: 1000,
 });
@@ -66,7 +64,7 @@ const fetchReferences = async (state: { summary: string }) => {
       }
       return { title: title.trim(), url: url.trim() };
     })
-    .filter((link): link is { title: string; url: string } => link !== null);
+    .filter((link): link is Link => link !== null);
   return { references: links };
 };
 

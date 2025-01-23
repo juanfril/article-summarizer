@@ -13,6 +13,7 @@ export interface Link {
 
 export interface Message {
   type: string;
+  url: string;
   title?: string;
   summary?: string;
   links?: Link[];

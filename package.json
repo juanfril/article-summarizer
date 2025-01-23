@@ -1,10 +1,11 @@
 {
   "name": "article-summarizer",
-  "module": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "bun run build",
-    "dev": "bun run dev"
+    "clean": "rm -rf dist",
+    "build": "bun build src/**/*.ts src/*.ts --outdir dist --target browser --format esm && rsync -a --include='*/' --include='*.html' --include='*.css' --include='*.json' --exclude='*' src/ dist/",
+    "prepare": "bun run clean && bun run build",
+    "dev": "bun dev"
   },
   "devDependencies": {
     "@types/bun": "latest",

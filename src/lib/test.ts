@@ -4,7 +4,7 @@ import { compiledGraph } from "./langgraph";
   try {
     // Estado inicial con la URL del artículo
     const initialState = {
-      url: "https://www.npmjs.com/package/@langchain/langgraph",
+      url: "https://www.omniloy.com/",
     };
 
     // Configuración adicional requerida por el MemorySaver

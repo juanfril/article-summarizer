@@ -3,9 +3,16 @@ import { Message, Page } from "./lib/types";
 
 chrome.runtime.onMessage.addListener(
   async (message: Message, sender, sendResponse) => {
+    if (!message.url) {
+      sendResponse({ success: false, error: "URL is required." });
+      return true;
+    }
     if (message.type === "generatePage") {
       try {
-        const state = await compiledGraph.invoke({ url: message.url });
+        const initialState = await compiledGraph.invoke({ url: message.url });
+        const config = { configurable: { thread_id: `thread-${Date.now()}` } };
+
+        const state = await compiledGraph.invoke(initialState, config);
 
         const page: Page = {
           id: crypto.randomUUID(),
