@@ -6,7 +6,19 @@
     <script src="popup.js" defer></script>
   </head>
   <body>
-    <h1>Your Generated Pages</h1>
+    <h1>Summarize an Article</h1>
+    <form id="articleForm">
+      <label for="articleUrl">Paste the article URL here:</label>
+      <input
+        type="url"
+        id="articleUrl"
+        placeholder="https://example.com"
+        required
+      />
+      <button type="submit">Generate Summary</button>
+    </form>
+    <div id="result"></div>
+    <h2>Your Generated Pages</h2>
     <div id="pages"></div>
   </body>
 </html>

@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "bun build src/**/*.ts src/*.ts --outdir dist --target browser --format esm && rsync -a --include='*/' --include='*.html' --include='*.css' --include='*.json' --exclude='*' src/ dist/",
+    "build": "bun build src/**/*.ts --outdir dist --target browser --format esm && rsync -a --include='*/' --include='*.html' --include='*.css' --include='*.json' --exclude='*' src/ dist/",
     "prepare": "bun run clean && bun run build",
     "dev": "bun dev"
   },

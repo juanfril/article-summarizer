@@ -1,7 +1,6 @@
 import { BaseMessageLike } from "@langchain/core/messages";
 import { ChatGroq } from "@langchain/groq";
-import { Annotation, MemorySaver } from "@langchain/langgraph";
-import { StateGraph } from "@langchain/langgraph";
+import { Annotation, MemorySaver, StateGraph } from "@langchain/langgraph/web";
 import { Link } from "./types";
 
 const GROQ_API_KEY = "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";
@@ -46,25 +45,29 @@ const fetchReferences = async (state: { summary: string }) => {
       },
       {
         role: "user",
-        content: `Based on the summary "${state.summary}", find 3 relevant links about the topic.`,
+        content: `Based on the summary "${state.summary}", provide 3 relevant references about the topic. Return the references in the following format: "Title - URL". Ensure each reference is on a new line and strictly follows this format.`,
       },
     ],
   ];
 
   const response = await model.generate(messages);
 
+  console.log(`response: ${JSON.stringify(response)}`);
+
   const links = response.generations[0][0].text
     .split("\n")
-    .filter((line) => line.includes("http")) // Asegurarse de que la línea tiene una URL
+    .filter((line) => line.includes("http"))
     .map((line) => {
       const [title, url] = line.split(" - ");
       if (!title || !url) {
         console.warn(`Skipping invalid line: "${line}"`);
-        return null; // Ignorar líneas mal formateadas
+        return null;
       }
-      return { title: title.trim(), url: url.trim() };
+      const cleanUrl = url.replace(/[<>]/g, "").trim();
+      return { title: title.trim(), url: cleanUrl };
     })
     .filter((link): link is Link => link !== null);
+
   return { references: links };
 };
 
