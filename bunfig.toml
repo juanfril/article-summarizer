@@ -1,0 +1,7 @@
+[script]
+build = "bun build src/* --out-dir dist --target bun"
+dev = "bun bun-dev"
+
+[paths]
+src = "./src"
+dist = "./dist"
