@@ -39,9 +39,10 @@ bun run prepare
 
 ### Scripts
 
-- bun run dev - Start the development server.
-- bun run build - Build the extension for production.
-- bun run clean - Remove the `dist/` directory.
+- `bun run dev` - Start the development server.
+- `bun run build` - Build the extension for production.
+- `bun run clean` - Remove the `dist/` directory.
+- `bun run test` - Run tests.
 
 ## Folder Structure
 
@@ -51,10 +52,10 @@ bun run prepare
 
 ## Technologies Used 🧠
 
-- LangChain: AI framework for building LLM-powered workflows.
-- OpenAI: Powering intelligent summaries and references.
-- TypeScript: Ensuring type safety and better developer experience.
-- Chrome Extensions: Delivering seamless browser integration.
+- **LangChain**: AI framework for building LLM-powered workflows.
+- **OpenAI**: Powering intelligent summaries and references.
+- **TypeScript**: Ensuring type safety and better developer experience.
+- **Chrome Extensions**: Delivering seamless browser integration.
 
 ### How to Test the Extension in Chrome
 
@@ -68,9 +69,10 @@ bun run prepare
 Contributions are welcome! Feel free to:
 
 1. Fork the repository.
-2. Create a new branch: git checkout -b feature/my-feature.
-3. Commit changes: git commit -m 'Add my feature'.
-4. Push your branch: git push origin feature/my-feature. 5. Submit a pull request.
+2. Create a new branch: `git checkout -b feature/my-feature`.
+3. Commit changes: `git commit -m 'Add my feature'`.
+4. Push your branch: `git push origin feature/my-feature`.
+5. Submit a pull request.
 
 ### License 📄
 
