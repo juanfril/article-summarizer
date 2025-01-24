@@ -5,11 +5,15 @@
     "clean": "rm -rf dist",
     "build": "bun build src/**/*.ts --outdir dist --target browser --format esm && rsync -a --include='*/' --include='*.html' --include='*.css' --include='*.json' --exclude='*' src/ dist/",
     "prepare": "bun run clean && bun run build",
-    "dev": "bun dev"
+    "dev": "bun dev",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/chrome": "^0.0.299"
+    "@types/chrome": "^0.0.299",
+    "@vitest/coverage-v8": "^3.0.4",
+    "vitest": "^3.0.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
