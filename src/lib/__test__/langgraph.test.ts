@@ -1,10 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Link } from "../types";
 
-// First declare the mock function
 const generateMock = vi.fn();
 
-// Mock the module before importing compiledGraph
 vi.doMock("@langchain/groq", async () => {
   return {
     ChatGroq: class {
@@ -20,7 +18,6 @@ vi.doMock("@langchain/groq", async () => {
   };
 });
 
-// Import after mocking
 const { compiledGraph } = await import("../langgraph");
 
 describe("Article Summarizer Integration", () => {
@@ -32,7 +29,6 @@ describe("Article Summarizer Integration", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    // Set up mock responses
     generateMock
       .mockResolvedValueOnce({ generations: [[{ text: mockSummary }]] })
       .mockResolvedValueOnce({
@@ -59,7 +55,6 @@ describe("Article Summarizer Integration", () => {
     expect(state.summary).toBe(mockSummary);
     expect(state.references).toEqual(mockReferences);
 
-    // Verify generate was called with correct parameters
     expect(generateMock).toHaveBeenCalledTimes(2);
     expect(generateMock).toHaveBeenNthCalledWith(1, [
       [
@@ -76,9 +71,7 @@ describe("Article Summarizer Integration", () => {
   });
 
   it("should handle errors when summary generation fails", async () => {
-    // Clear previous mock implementations
     generateMock.mockReset();
-    // Set up error mock for the first call
     generateMock.mockRejectedValue(new Error("API Error"));
 
     const initialState = {
