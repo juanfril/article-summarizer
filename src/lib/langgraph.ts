@@ -63,7 +63,7 @@ const fetchReferences = async (state: { summary: string }) => {
         console.warn(`Skipping invalid line: "${line}"`);
         return null;
       }
-      const cleanUrl = url.replace(/[<>]/g, "").trim();
+      const cleanUrl = url.replace(/["<>]/g, "").replace(/\s+/g, "").trim();
       return { title: title.trim(), url: cleanUrl };
     })
     .filter((link): link is Link => link !== null);
