@@ -1,6 +1,6 @@
 # Article Summarizer 🚀
 
-A Chrome extension that leverages AI to effortlessly summarize articles and provide curated references. Save time and gain insights instantly!
+Welcome to **Article Summarizer**! A Chrome extension that leverages AI to effortlessly summarize articles and provide curated references. Save time and gain insights instantly—perfect for students, professionals, and curious minds!
 
 ## Features ✨
 
@@ -13,11 +13,11 @@ A Chrome extension that leverages AI to effortlessly summarize articles and prov
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/article-summarizer.git
+git clone https://github.com/juanfril/article-summarizer.git
 cd article-summarizer
 ```
 
-2. Install Bun (if you haven’t already) and prepare the project:
+2. Install [Bun](https://bun.sh/) (if you haven’t already) and prepare the project:
 
 ```bash
 bun install
@@ -41,7 +41,7 @@ bun run prepare
 
 - bun run dev - Start the development server.
 - bun run build - Build the extension for production.
-- bun run clean - Remove the dist/ directory.
+- bun run clean - Remove the `dist/` directory.
 
 ## Folder Structure
 
@@ -56,12 +56,26 @@ bun run prepare
 - TypeScript: Ensuring type safety and better developer experience.
 - Chrome Extensions: Delivering seamless browser integration.
 
+### How to Test the Extension in Chrome
+
+1. **Load the Extension**: Follow the installation steps above.
+2. **Click the Icon**: Once loaded, you’ll see the **Article Summarizer** icon in your Chrome toolbar.
+3. **Paste a URL**: Open the popup, paste the URL of an article, and click "Generate Summary."
+4. **Explore the Results**: You’ll see the summary and generated references. It’s that easy!
+
 ### Contributing 🤝
 
-Contributions are welcome! Feel free to: 1. Fork the repository. 2. Create a new branch: git checkout -b feature/my-feature. 3. Commit changes: git commit -m 'Add my feature'. 4. Push your branch: git push origin feature/my-feature. 5. Submit a pull request.
+Contributions are welcome! Feel free to:
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b feature/my-feature.
+3. Commit changes: git commit -m 'Add my feature'.
+4. Push your branch: git push origin feature/my-feature. 5. Submit a pull request.
 
 ### License 📄
 
 This project is licensed under the MIT License.
 
-Feel free to copy and use this directly in your project! If you'd like tweaks or additions, let me know. 😄
+---
+
+That's it! You're now ready to summarize articles like a pro. If you have questions or suggestions, feel free to open an issue in the repository. Happy summarizing! 😄
