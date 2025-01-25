@@ -2,6 +2,16 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Link } from "../types";
 
 const generateMock = vi.fn();
+const mockChromeStorage = {
+  get: vi.fn().mockResolvedValue({ groqApiKey: "test-api-key" }),
+  set: vi.fn(),
+};
+
+global.chrome = {
+  storage: {
+    local: mockChromeStorage,
+  },
+} as any;
 
 vi.doMock("@langchain/groq", async () => {
   return {
