@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Article Summarizer Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Article Summarizer Settings</h1>
+      <div class="form-group">
+        <label for="apiKey">GROQ API Key</label>
+        <input
+          type="password"
+          id="apiKey"
+          placeholder="Enter your GROQ API key"
+        />
+        <small
+          >Get your API key from
+          <a href="https://console.groq.com" target="_blank"
+            >Groq Console</a
+          ></small
+        >
+      </div>
+      <button id="save">Save Settings</button>
+      <div id="status" class="status"></div>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

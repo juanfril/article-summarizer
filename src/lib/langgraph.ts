@@ -3,13 +3,25 @@ import { ChatGroq } from "@langchain/groq";
 import { Annotation, MemorySaver, StateGraph } from "@langchain/langgraph/web";
 import { Link } from "./types";
 
-const GROQ_API_KEY = "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";
+let modelInstance: ChatGroq | null = null;
 
-const model = new ChatGroq({
-  apiKey: GROQ_API_KEY,
-  temperature: 0.7,
-  maxTokens: 1000,
-});
+const getModel = async () => {
+  if (!modelInstance) {
+    const result = await chrome.storage.local.get(["groqApiKey"]);
+    if (!result.groqApiKey) {
+      throw new Error(
+        "API key not found. Please set it in the extension options."
+      );
+    }
+
+    modelInstance = new ChatGroq({
+      apiKey: result.groqApiKey,
+      temperature: 0.7,
+      maxTokens: 1000,
+    });
+  }
+  return modelInstance;
+};
 
 const stateAnnotation = Annotation.Root({
   url: Annotation<string>(),
@@ -18,6 +30,7 @@ const stateAnnotation = Annotation.Root({
 });
 
 const summarizeArticle = async ({ url }: { url: string }) => {
+  const model = await getModel();
   const messages: BaseMessageLike[][] = [
     [
       {
@@ -31,12 +44,13 @@ const summarizeArticle = async ({ url }: { url: string }) => {
     ],
   ];
 
-  const response = await model.generate(messages);
+  const response = await model!.generate(messages);
 
   return { summary: response.generations[0][0].text.trim() };
 };
 
 const fetchReferences = async (state: { summary: string }) => {
+  const model = await getModel();
   const messages: BaseMessageLike[][] = [
     [
       {
@@ -50,7 +64,7 @@ const fetchReferences = async (state: { summary: string }) => {
     ],
   ];
 
-  const response = await model.generate(messages);
+  const response = await model!.generate(messages);
 
   console.log(`response: ${JSON.stringify(response)}`);
 
